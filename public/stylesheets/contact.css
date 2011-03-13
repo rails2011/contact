@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+}
+thead {
+    background-color: lightgray;
+}
+.welcome {
+    background-color: yellow;
+}

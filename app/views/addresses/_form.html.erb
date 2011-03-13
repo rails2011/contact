@@ -1,0 +1,54 @@
+<%= form_for(@address, :html => { :multipart => true }) do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @address.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @address.photo.url !~ /missing/ %>
+    <%= image_tag @address.photo.url, :border => 0 %>
+    <div class="field">
+      <%= f.label :photo_file_name %>:&nbsp;
+      <font color="red"><i><%= @address.photo_file_name %></i></font>
+    </div>
+  <% end %>
+  
+  <div>
+    <%= f.file_field :photo %>
+    <hr />
+  </div>
+  <div class="field">
+    <%= f.label 'จังหวัด' %><br />
+    <%= select('address', :province_id,
+        Province.all(:order => 'pname').collect {|p| [p.pname, p.pcode]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :fname %><br />
+    <%= f.text_field :fname %>
+  </div>
+  <div class="field">
+    <%= f.label :lname %><br />
+    <%= f.text_field :lname %>
+  </div>
+  <div class="field">
+    <%= f.label 'วันเกิด' %><br />
+    <%= f.text_field :bdate, :value => buddhist_date(@address.bdate) %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

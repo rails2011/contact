@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  pcode: MyString
+  pname: MyString
+
+two:
+  pcode: MyString
+  pname: MyString

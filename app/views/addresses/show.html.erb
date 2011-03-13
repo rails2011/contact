@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= image_tag @address.photo.url %><br />
+  Photo: <font color="red"><i><%= @address.photo_file_name %></i></font>
+</p>
+
+<p>
+  <b>จังหวัด:</b>
+  <%= Province.find_by_pcode(@address.province_id.to_s).pname %>
+</p>
+
+<p>
+  <b>Fname:</b>
+  <%= @address.fname %>
+</p>
+
+<p>
+  <b>Lname:</b>
+  <%= @address.lname %>
+</p>
+
+<p>
+  <b>วันเกิด:</b>
+  <%= buddhist_date(@address.bdate) %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @address.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @address.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to 'Back', addresses_path %>
